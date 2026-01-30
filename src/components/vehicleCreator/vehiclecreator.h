@@ -22,4 +22,5 @@ private:
     void showNameWarning(const QString& title, const QString& message) const;
 };
 
-#endif // VEHICLECREATOR_H
+#endif
+
