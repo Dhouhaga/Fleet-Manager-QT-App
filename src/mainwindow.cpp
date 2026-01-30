@@ -82,9 +82,9 @@ MainWindow::~MainWindow()
 QTableWidgetItem* MainWindow::createIndexItem(int index) {
     QTableWidgetItem* item = new QTableWidgetItem(QString::number(index));
     item->setData(Qt::UserRole, index);
-    item->setBackground(QColor("#2c3e50"));  // Dark blue background
-    item->setForeground(Qt::white);          // White text
-    item->setTextAlignment(Qt::AlignCenter); // Centered text
+    item->setBackground(QColor("#2c3e50"));  
+    item->setForeground(Qt::white);        
+    item->setTextAlignment(Qt::AlignCenter);
     return item;
 }
 
@@ -597,3 +597,4 @@ void MainWindow::on_showCompatibilityButton_clicked()
         QMessageBox::warning(this, "Warning", "Please select a vehicle");
     }
 }
+
