@@ -20,4 +20,5 @@ private:
     QString formatCompatibilityInfo(const Vehicle* vehicle, const FleetManager& fleetManager) const;
 };
 
-#endif // VEHICLEINFOVIEWER_H
+#endif 
+
