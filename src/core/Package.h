@@ -28,7 +28,7 @@ public:
     Package(Package&&) = default;
     Package& operator=(Package&&) = default;
 
-    // virtual methods for polymorphic display - NOW RETURNS STRING
+    // virtual methods for polymorphic display
     virtual std::string displayInfo() const = 0;
     virtual std::string getType() const = 0;
 
@@ -77,3 +77,4 @@ public:
 };
 
 #endif
+
