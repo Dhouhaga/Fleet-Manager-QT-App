@@ -27,7 +27,7 @@ public:
     Vehicle(const std::string& n, double capacity);
     virtual ~Vehicle() = default;
 
-    // Delete copy operations to prevent copying as required
+    // Delete copy operations to prevent copying
     Vehicle(const Vehicle&) = delete;
     Vehicle& operator=(const Vehicle&) = delete;
 
@@ -37,15 +37,15 @@ public:
 
     // Pure virtual methods for polymorphic behavior
     virtual std::string getType() const = 0;
-    virtual std::string getSpecificInfo() const = 0;  // NOW RETURNS STRING
+    virtual std::string getSpecificInfo() const = 0;  
 
     // Package management methods
     bool addPackage(std::unique_ptr<Package> package);
     std::unique_ptr<Package> removeLastPackage();
     void deliverAllPackages();      // Destroys all packages and resets state
     void setState(VehicleState newState);
-    std::string displayInfo() const;       // NOW RETURNS STRING
-    std::string displayDetails() const;    // NOW RETURNS STRING
+    std::string displayInfo() const;       
+    std::string displayDetails() const;    
 
     // Getters const because they won't change the object
     int getId() const;
@@ -59,7 +59,7 @@ public:
 
 // Drone class with specific autonomy property
 class Drone : public Vehicle {
-    double mAutonomy;               // Autonomy in km as per requirements
+    double mAutonomy;              
 
 public:
     Drone(const std::string& n, double aut);
@@ -84,3 +84,4 @@ public:
 };
 
 #endif
+
