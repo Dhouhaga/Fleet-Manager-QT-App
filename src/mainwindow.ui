@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1300</width>
+    <height>850</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Fleet Management System</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">
+    QWidget {
+      background-color: #ffffff;
+    }
+    QPushButton {
+      border-radius: 5px;
+      padding: 4px 8px;
+      min-height: 17px;
+      font-size: 10pt;
+    }
+
+    /* Vehicle buttons: cyan */
+    #createDroneButton, #createVanButton, #createRobotButton,
+    #setStateButton, #deliverButton {
+      background-color: #c1eaed;
+      color: #2c3e50;
+    }
+    #createDroneButton:hover, #createVanButton:hover, #createRobotButton:hover,
+    #setStateButton:hover, #deliverButton:hover {
+      background-color: #9fd6da;
+    }
+    #createDroneButton:pressed, #createVanButton:pressed, #createRobotButton:pressed,
+    #setStateButton:pressed, #deliverButton:pressed {
+      background-color: #7fbfc3;
+    }
+
+    /* Remove Vehicle button: red */
+    #removeVehicleButton {
+      background-color: #FF0000;
+      color: white;
+    }
+    #removeVehicleButton:hover { background-color: #c0392b; }
+    #removeVehicleButton:pressed { background-color: #922b21; }
+
+    /* Package buttons: gray */
+    #createStandardPackageButton, #createFragilePackageButton,
+    #createRefrigeratedPackageButton, #createExpressPackageButton,
+    #assignPackageButton, #removePackageButton {
+      background-color: #b1b1b1;
+      color: #2c3e50;
+    }
+    #createStandardPackageButton:hover, #createFragilePackageButton:hover,
+    #createRefrigeratedPackageButton:hover, #createExpressPackageButton:hover,
+    #assignPackageButton:hover, #removePackageButton:hover {
+      background-color: #999999;
+    }
+    #createStandardPackageButton:pressed, #createFragilePackageButton:pressed,
+    #createRefrigeratedPackageButton:pressed, #createExpressPackageButton:pressed,
+    #assignPackageButton:pressed, #removePackageButton:pressed {
+      background-color: #777777;
+    }
+
+    /* Show Details button: highlighted yellow */
+    #showVehicleDetailsButton, #showCompatibilityButton {
+      background-color: #fdd907;
+      color: #2c3e50;
+      font-weight: bold;
+    }
+    #showVehicleDetailsButton:hover, #showCompatibilityButton:hover { background-color: #e6c800; }
+    #showVehicleDetailsButton:pressed, #showCompatibilityButton:pressed { background-color: #bfa300; }
+
+    /* System controls: yellow */
+    #refreshButton {
+      background-color: #0e689b;
+      color: #ffffff;
+      font-weight: bold;
+    }
+    #refreshButton:hover { background-color: #0b4f75; }
+    #refreshButton:pressed { background-color: #00476f; }
+
+    /* Table styles */
+    QTableWidget {
+        gridline-color: #bdc3c7;
+        alternate-background-color: #f8f9fa;
+    }
+    QTableWidget::item {
+        padding: 4px;
+    }
+    QTableWidget::item:selected {
+        background-color: #3498db;
+        color: white;
+    }
+    QHeaderView::section {
+        background-color: #2c3e50;
+        color: white;
+        padding: 4px;
+        border: 1px solid #34495e;
+        font-weight: bold;
+    }
+    </string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="3">
+     <widget class="QLabel" name="headerLabel">
+      <property name="styleSheet">
+       <string notr="true">
+        QLabel {
+          font-size: 20pt;
+          font-weight: bold;
+          color: #2c3e50;
+          background-color: #ecf0f1;
+          padding: 12px;
+          border-radius: 8px;
+        }
+       </string>
+      </property>
+      <property name="text">
+       <string>Fleet Management System</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QGroupBox" name="vehicleGroupBox">
+      <property name="title">
+       <string>Vehicle Management</string>
+      </property>
+       <property name="maximumWidth"> <number>240</number> </property>
+      <layout class="QVBoxLayout" name="verticalLayout_1">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">font-weight: bold; color: #2c3e50;</string>
+         </property>
+         <property name="text">
+          <string>Create New Vehicle:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="createDroneButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Drone</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="createVanButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Van</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="createRobotButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Robot</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_1">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="styleSheet">
+          <string notr="true">font-weight: bold; color: #2c3e50;</string>
+         </property>
+         <property name="text">
+          <string>Vehicle Operations:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="removeVehicleButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Remove Selected Vehicle</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="setStateButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Change Vehicle State</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="deliverButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Deliver Packages</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QGroupBox" name="vehicleListGroupBox">
+      <property name="styleSheet">
+       <string notr="true">
+        QGroupBox {
+          background-color: #ffffff;
+          border: 1px solid #bdc3c7;
+          border-radius: 6px;
+          padding: 10px;
+        }
+       </string>
+      </property>
+      <property name="title">
+       <string>Vehicle Fleet</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">font-weight: bold; color: #2c3e50;</string>
+         </property>
+         <property name="text">
+          <string>Available Vehicles:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+       <widget class="QTableWidget" name="vehicleTableWidget">
+           <property name="alternatingRowColors">
+               <bool>true</bool>
+           </property>
+           <property name="selectionMode">
+               <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+           </property>
+           <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+           </property>
+       </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_1">
+         <item>
+          <widget class="QLabel" name="vehicleCountLabel">
+           <property name="text">
+            <string>Vehicles: 0</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_1">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="showVehicleDetailsButton">
+           <property name="text">
+            <string>Show Details</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QGroupBox" name="packageGroupBox">
+      <property name="title">
+       <string>Package Management</string>
+      </property>
+       <property name="maximumWidth"> <number>240</number> </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="styleSheet">
+          <string notr="true">font-weight: bold; color: #2c3e50;</string>
+         </property>
+         <property name="text">
+          <string>Create New Package:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="createStandardPackageButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Standard Package</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="createFragilePackageButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Fragile Package</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="createRefrigeratedPackageButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Refrigerated Package</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="createExpressPackageButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Express Package</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="styleSheet">
+          <string notr="true">font-weight: bold; color: #2c3e50;</string>
+         </property>
+         <property name="text">
+          <string>Package Operations:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="assignPackageButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Assign Package to Vehicle</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="removePackageButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Remove Package from Vehicle</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="2">
+     <widget class="QGroupBox" name="packageListGroupBox">
+      <property name="styleSheet">
+       <string notr="true">
+        QGroupBox {
+          background-color: #ffffff;
+          border: 1px solid #bdc3c7;
+          border-radius: 6px;
+          padding: 10px;
+        }
+       </string>
+      </property>
+      <property name="title">
+       <string>Pending Packages</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="styleSheet">
+          <string notr="true">font-weight: bold; color: #2c3e50;</string>
+         </property>
+         <property name="text">
+          <string>Packages Awaiting Assignment:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+       <widget class="QTableWidget" name="pendingPackagesTableWidget">
+           <property name="alternatingRowColors">
+               <bool>true</bool>
+           </property>
+           <property name="selectionMode">
+               <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+           </property>
+           <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+           </property>
+       </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="packageCountLabel">
+           <property name="text">
+            <string>Pending Packages: 0</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="showCompatibilityButton">
+           <property name="text">
+            <string>Show Compatibility</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QGroupBox" name="systemGroupBox">
+      <property name="styleSheet">
+       <string notr="true">
+    QGroupBox {
+      background-color: #ffffff;
+      border: 1px solid #bdc3c7;
+      border-radius: 6px;
+      padding: 10px;
+    }
+   </string>
+      </property>
+      <property name="title">
+       <string>System Controls</string>
+      </property>
+       <property name="maximumWidth"> <number>240</number> </property>
+      <layout class="QVBoxLayout" name="verticalLayout_system">
+       <item>
+        <widget class="QPushButton" name="refreshButton">
+         <property name="text">
+          <string>Refresh All</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="3">
+     <widget class="QGroupBox" name="logGroupBox">
+      <property name="styleSheet">
+       <string notr="true">
+        QGroupBox {
+          background-color: #ffffff;
+          border: 1px solid #bdc3c7;
+          border-radius: 6px;
+          padding: 10px;
+        }
+       </string>
+      </property>
+      <property name="title">
+       <string>System Log</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_log"/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
