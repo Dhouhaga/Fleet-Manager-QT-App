@@ -72,7 +72,7 @@ bool FleetManager::addPackageToVehicle(int vehicleIndex, int packageIndex) {
         return false;
     }
 
-    // Now safely move the package
+    // move the package
     if (mVehicles[vehicleIndex]->addPackage(std::move(mPendingPackages[packageIndex]))) {
         mPendingPackages.erase(mPendingPackages.begin() + packageIndex);
         return true;
@@ -124,7 +124,7 @@ void FleetManager::setVehicleState(int vehicleIndex, VehicleState state) {
     mVehicles[vehicleIndex]->setState(state);
 }
 
-// Display all vehicles summary - NOW RETURNS STRING
+// Display all vehicles summary
 std::string FleetManager::displayAllVehicles() const {
     std::ostringstream oss;
     if (mVehicles.empty()) {
@@ -247,7 +247,7 @@ int FleetManager::getVehiclePackageCount(int vehicleIndex) const {
     return 0;
 }
 
-// Display compatibility info for UI - NOW RETURNS STRING
+// Display compatibility info for UI
 std::string FleetManager::displayCompatibilityInfo(int vehicleIndex) const {
     std::ostringstream oss;
     if (vehicleIndex >= 0 && vehicleIndex < static_cast<int>(mVehicles.size())) {
@@ -297,3 +297,4 @@ double FleetManager::getUsedCapacity() const {
     }
     return used;
 }
+
