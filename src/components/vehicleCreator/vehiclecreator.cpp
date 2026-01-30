@@ -35,7 +35,6 @@ std::pair<QString, double> VehicleCreator::createVehicleDialog(const QString& ti
     dialog.setWindowTitle(title);
     dialog.setFixedSize(400, needsAutonomy ? 160 : 120);
 
-    // Apply styling consistent with main window
     dialog.setStyleSheet(R"(
         QDialog {
             background-color: #ffffff;
@@ -104,7 +103,7 @@ std::pair<QString, double> VehicleCreator::createVehicleDialog(const QString& ti
         autonomyLabel->setStyleSheet("font-weight: bold; color: #2c3e50;");
 
         autonomySpinBox = new QDoubleSpinBox();
-        autonomySpinBox->setRange(0.1, 1000.0);  // Changed from 0.1 to ensure positive values
+        autonomySpinBox->setRange(0.1, 1000.0);
         autonomySpinBox->setValue(10.0);
         autonomySpinBox->setSingleStep(1.0);
         autonomySpinBox->setSuffix(" km");
@@ -169,3 +168,4 @@ void VehicleCreator::showNameWarning(const QString& title, const QString& messag
 {
     QMessageBox::warning(const_cast<QWidget*>(this->parentWidget()), title, message);
 }
+
