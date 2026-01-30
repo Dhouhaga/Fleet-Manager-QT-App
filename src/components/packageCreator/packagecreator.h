@@ -28,4 +28,5 @@ private:
     std::unique_ptr<Package> createPackageDialog(const QString& title, PackageType type);
 };
 
-#endif // PACKAGECREATOR_H
+#endif
+
