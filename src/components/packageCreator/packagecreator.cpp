@@ -92,7 +92,7 @@ std::unique_ptr<Package> PackageCreator::createPackageDialog(const QString& titl
     QLabel *weightLabel = new QLabel("Weight (g):");
     weightLabel->setStyleSheet("font-weight: bold; color: #2c3e50;");
     QDoubleSpinBox *weightSpinBox = new QDoubleSpinBox();
-    weightSpinBox->setRange(10.0, 500000.0);  // Changed from 1.0 to 0.1 to allow small but positive weights
+    weightSpinBox->setRange(10.0, 500000.0); 
     weightSpinBox->setValue(100.0);
     weightSpinBox->setSingleStep(10.0);
     weightSpinBox->setSuffix(" g");
@@ -115,7 +115,7 @@ std::unique_ptr<Package> PackageCreator::createPackageDialog(const QString& titl
         QLabel *tempLabel = new QLabel("Temperature (°C):");
         tempLabel->setStyleSheet("font-weight: bold; color: #2c3e50;");
         temperatureSpinBox = new QDoubleSpinBox();
-        temperatureSpinBox->setRange(-50.0, 10.0);  // Fixed: Changed from 20.0 to 10.0 to match backend validation
+        temperatureSpinBox->setRange(-50.0, 10.0); 
         temperatureSpinBox->setValue(4.0);
         temperatureSpinBox->setSingleStep(0.5);
         temperatureSpinBox->setSuffix(" °C");
@@ -198,3 +198,4 @@ std::unique_ptr<Package> PackageCreator::createPackageDialog(const QString& titl
 
     return nullptr;
 }
+
