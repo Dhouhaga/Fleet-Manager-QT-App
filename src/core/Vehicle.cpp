@@ -157,7 +157,6 @@ std::string Drone::getSpecificInfo() const {
 
 // Van implementation with 500000g (500kg)
 Van::Van(const std::string& n) : Vehicle(n, 500000) {
-    // No additional validation needed - base constructor handles name validation
 }
 
 std::string Van::getType() const {
@@ -179,3 +178,4 @@ std::string Robot::getType() const {
 std::string Robot::getSpecificInfo() const {
     return "Autonomous urban robot";
 }
+
