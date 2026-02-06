@@ -92,7 +92,7 @@ std::unique_ptr<Package> PackageCreator::createPackageDialog(const QString& titl
     QLabel *weightLabel = new QLabel("Weight (g):");
     weightLabel->setStyleSheet("font-weight: bold; color: #2c3e50;");
     QDoubleSpinBox *weightSpinBox = new QDoubleSpinBox();
-    weightSpinBox->setRange(10.0, 500000.0); 
+    weightSpinBox->setRange(-999999999.0, 999999999.0); 
     weightSpinBox->setValue(100.0);
     weightSpinBox->setSingleStep(10.0);
     weightSpinBox->setSuffix(" g");
@@ -198,4 +198,5 @@ std::unique_ptr<Package> PackageCreator::createPackageDialog(const QString& titl
 
     return nullptr;
 }
+
 
