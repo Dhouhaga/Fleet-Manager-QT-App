@@ -18,7 +18,7 @@ The system uses polymorphic inheritance with abstract base classes for vehicles 
 - Implements unique ID generation through static counter
 - Uses const-correct interfaces for query operations that don't modify state
 
-([view](docs/uml/vehicle-hierarchy.pdf))
+([view vehicle hierarchy class diagram](docs/uml/vehicle-hierarchy.pdf))
 
 **Derived Vehicle Implementations**
 
@@ -31,7 +31,7 @@ The system uses polymorphic inheritance with abstract base classes for vehicles 
 #### Package Management System
 Specialized package types inherit from a common base class:
 
-([view](docs/uml/package-hierarchy.pdf))
+([view package hierarchy class diagram](docs/uml/package-hierarchy.pdf))
 
 | Package Type | Unique Attributes | Validation |
 |--------------|------------------|------------|
@@ -48,11 +48,7 @@ The controller coordinates system operations:
 - Statistics calculation with incremental updates
 - Compatibility checking before operations to reduce failed assignments
 
-([view](docs/uml/relationships.pdf))
-
-### Cumplete Class Diagram
-
-[Complete class diagram](docs/uml/full-system-diagram.pdf)
+([view FleetManager complete full class diagram](docs/uml/relationships.pdf))
 
 ## Main application interface showing vehicle fleet, pending packages, and management controls
 ### Initial State
